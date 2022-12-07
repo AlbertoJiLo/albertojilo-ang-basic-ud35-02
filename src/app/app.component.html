@@ -1,0 +1,93 @@
+
+<!--Container principal-->
+
+<div class="container formulario ">
+
+  <!--Row titulo-->
+
+  <div class="row ">
+    <div class="col col-sm-12">
+      <h3>Formulario de contacto</h3>
+    </div>
+  </div>
+
+  <!--Row nombre-->
+
+    <div class="row  align-items-center justify-content-center">
+      <div class="col col-sm-1">
+        <label  class="form-label">Nombre</label>
+      </div>
+      <div class="col col-sm-5">
+        <input type="name" class="form-control"  placeholder="Nombre y apellido" [(ngModel)]="nombre">
+        <div *ngIf="nombre==''" class="error">
+          Introduzca su nombre y apellido
+        </div>
+      </div>
+    </div>
+
+    <!--Row email-->
+
+    <div class="row align-items-center justify-content-center">
+      <div class="col col-sm-1">
+        <label  class="form-label">Email</label>
+      </div>
+      <div class="col col-sm-5">
+        <input type="name" class="form-control" placeholder="ejemplo@dominio.com" [(ngModel)]="email">
+        <div *ngIf="email==''" class="error">
+          Introduzca un email válido
+        </div>
+      </div>
+    </div>
+
+    <!--Row mensaje-->
+
+    <div class="row align-items-center justify-content-center">
+      <div class="col col-sm-1">
+        <label  class="form-label">Mensaje</label>
+      </div>
+      <div class="col col-sm-5">
+        <textarea cols="15" rows="2" class="form-control" [(ngModel)]="mensaje"></textarea>
+        <div *ngIf="mensaje==''" class="error">
+          Introduzca un mensaje
+        </div>
+      </div>
+    </div>
+
+    <!--Row captcha-->
+
+    <div class="row align-items-center justify-content-center">
+      <div class="col col-sm-1">
+        <label  class="form-label">{{numero1}}+{{numero2}}=?</label>
+      </div>
+      <div class="col col-sm-5">
+        <input type="name" class="form-control" placeholder="Respuesta" [(ngModel)]="captcha" >
+
+        <!--Validaremos que el captcha sea la suma de dos numeros generados en el typescript-->
+
+        <div [(ngModel)]="captchaCheck" *ngIf="captchaCheck!=true" class="error" ngDefaultControl>
+          Validación anti-spam incorrecta
+        </div>
+      </div>
+    </div>
+
+    <!--Row boton enviar-->
+
+    <div class="row align-items-center justify-content-center">
+      <div class="col col-sm-4">
+        <button type="button" class="btn btn-primary" (click)="enviar()">Enviar</button>
+      </div>
+    </div>
+
+    <div class="container formulario ">
+    <div class="row align-items-center justify-content-center">
+      <div class="col">
+        <app-formulario [usuarios]="listaUsuarios"></app-formulario>
+      </div>
+    </div>
+
+</div>
+
+<!--Llamamos al html del componente formulario-->
+
+
+<router-outlet></router-outlet>
